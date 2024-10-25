@@ -1,5 +1,5 @@
 import express from "express";
-// import cors from "cors";
+import cors from "cors";
 import { userRouter } from "./routes/userRouter.js";
 import { createDbConnection } from "./config/DbConnection.js";
 import { contactsRouter } from "./routes/contactsRouter.js";
@@ -8,7 +8,11 @@ const app = express();
 
 const PORT = 5000;
 
-// app.use(cors());
+app.use(
+  cors({
+    origin: "https://phone-book-frontend-gamma.vercel.app/",
+  })
+);
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*"); // Allow requests from all origins
   res.header(
