@@ -49,24 +49,21 @@ import { fileURLToPath } from "url";
 const app = express();
 const PORT = 5000;
 
-// Adjusted CORS middleware to cover preflight and allow credentials
 app.use(
   cors({
-    origin: "https://phone-book-frontend-gamma.vercel.app", // Dynamically allow all origins
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization", "x-vercel-forwarded-for"],
-    credentials: true, // Allow cookies and credentials if needed
+    origin: "https://phone-book-frontend-gamma.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// JSON parsing middleware
+app.options("*", cors());
+
 app.use(express.json());
 
-// API routes
 app.use("/user", userRouter);
 app.use("/contacts", contactsRouter);
 
-// Serve static files from frontend build directory
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, "../phone-book/build")));
