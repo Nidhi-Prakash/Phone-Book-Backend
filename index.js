@@ -10,27 +10,26 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Enable CORS with options for specific origins
-app.use(
-  cors({
-    origin: [
-      "https://phone-book-frontend-gamma.vercel.app",
-      "http://localhost:3000",
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: true,
+//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//     credentials: true,
+//   })
+// );
 
-// Remove this block, as `cors()` already manages these headers
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+// // Remove this block, as `cors()` already manages these headers
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
+
+app.use(cors());
 
 // Middleware to parse JSON bodies
 app.use(express.json());
