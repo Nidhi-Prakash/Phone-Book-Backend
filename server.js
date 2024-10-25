@@ -52,7 +52,7 @@ const PORT = 5000;
 app.use(
   cors({
     origin: [
-      "https://phone-book-frontend-gamma.vercel.app",
+      "https://phone-book-frontend-gamma.vercel.app/",
       "http://localhost:3000",
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
