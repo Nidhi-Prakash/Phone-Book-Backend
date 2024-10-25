@@ -52,7 +52,7 @@ const PORT = 5000;
 // Adjusted CORS middleware to cover preflight and allow credentials
 app.use(
   cors({
-    origin: true, // Dynamically allow all origins
+    origin: "https://phone-book-frontend-gamma.vercel.app", // Dynamically allow all origins
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization", "x-vercel-forwarded-for"],
     credentials: true, // Allow cookies and credentials if needed
